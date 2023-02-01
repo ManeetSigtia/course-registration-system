@@ -1,0 +1,4 @@
+Registration ID,Term ID,Course Name,Student Name,Sessions,Course Fee,Start Date,End Date,Discount Type,Discount Amount,Payment Method,Amount Paid,Payment Date,Account Name,Status
+017301020901770401,01,Scratch Coding Regular Course,Maneet,12,124,01/2/2023,19/04/2023,None,,Bank Transfer,,,,NT Pending
+017301020901770401,01,Scratch Coding Regular Course,Maneet,12,124,01/02/2023,19/04/2023,Early Bird,13,Bank Transfer,100,01/01/2023,Ansuman,Paid
+017301020901770401,02,Scratch Coding Regular Course,Maneet,12,124,26/04/2023,12/07/2023,Early Bird,12,Bank Transfer,100,01/01/2023,Ansuman,NT Pending

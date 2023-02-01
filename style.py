@@ -1,0 +1,9 @@
+main_font = 'Calibri'
+title_font = 'Tahoma'
+cyan_blue = '#0c8585'
+light_blue = '#ffffff'
+dark_blue = '#085757'
+orange = '#de781f'
+gray = '#e3e3e3'
+frame_width = 1500
+frame_height = 700
