@@ -96,11 +96,26 @@ The following is 7-minute video demonstrating all of the features of the applica
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+1. Clone the repository to your local machine using the following command:
 
+    ``git clone https://github.com/ManeetSigtia/course-registration-system.git``
 
+2. Navigate to the project directory:
+    
+    ``cd course-registration-system``
+ 
+3. Install any required dependencies, if necessary. You can use the following command to install dependencies listed in the requirements.txt file:
+
+    ``pip install -r requirements.txt``
+ 
+4. Run the main script by executing the following command:
+
+    ``python main.py``
+ 
+5. You should now see the output of the script.
+
+ 
 ## Project Status
 Project is: _complete_
 
