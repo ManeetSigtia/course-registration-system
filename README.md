@@ -97,6 +97,7 @@ The "Planning and Design" Folder has the document depicting the planning phase o
 
 ## Video Demonstration
 The following is 7-minute video demonstrating all of the features of the application:
+
 [![Demo Video](Screenshot/thumbnail.png)](https://vimeo.com/manage/videos/794941050)
 
 
