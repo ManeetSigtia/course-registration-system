@@ -1,5 +1,4 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import style
 from courseframe import CourseFrame
 from studentframe import StudentFrame
@@ -31,11 +30,6 @@ class Screens:
                               fg=style.cyan_blue).place(x=600, y=50)
         self.heading2 = Label(self.root, text="ASSEMBLY", font=(style.title_font, 50, "bold"),
                               fg=style.cyan_blue).place(x=700, y=130)
-
-        # making an image for the title
-        self.bulb_image = ImageTk.PhotoImage(Image.open(r"GA_logo.png"))
-        self.logo_label = Label(self.root, image=self.bulb_image)
-        self.logo_label.place(x=530, y=61)
 
         # making the objects from different user defined classes. These will be used to display all the widgets
         self.course_object = CourseFrame(root)

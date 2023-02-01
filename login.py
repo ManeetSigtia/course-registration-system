@@ -4,7 +4,6 @@ from screens import Screens
 from widgets import Widgets
 import encrypt
 import style
-from PIL import ImageTk, Image
 import file_handler
 
 
@@ -40,11 +39,6 @@ class Login(Widgets):
         # making the title text on 2 different lines
         Label(self.login_root, text="GENIUS", font=(style.title_font, 50, "bold"), fg=style.cyan_blue).place(x=600, y=50)
         Label(self.login_root, text="ASSEMBLY", font=(style.title_font, 50, "bold"), fg=style.cyan_blue).place(x=700, y=130)
-
-        # making an image for the title
-        self.bulb_image = ImageTk.PhotoImage(Image.open(r"GA_logo.png"))
-        self.logo_label = Label(self.login_root, image=self.bulb_image)
-        self.logo_label.place(x=530, y=61)
 
         # creating labels for the login frame
         Label(self.login_root, text='Username*', font=(style.main_font, 25), fg=style.orange).place(x=450, y=320)
