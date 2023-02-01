@@ -15,6 +15,7 @@ An application that allows instructors to enter details of courses, students and
   * [Enrollment](#enrollment)
   * [Reports](#reports)
   * [Common Functionality](#common-functionality)
+* [Design Overview](#design-overview)
 * [Video Demonstration](#video-demonstration)
 * [Setup](#setup)
 * [Project Status](#project-status)
@@ -90,6 +91,10 @@ Short for regular expression. A special order of characters that assist in strin
 14. The ability to return to home page through the use of a Back button.
 
 
+## Design Overview
+The "Planning and Design" Folder has the document depicting the planning phase of the system with various diagrams to structure the logical flow of the application.
+
+
 ## Video Demonstration
 The following is 7-minute video demonstrating all of the features of the application:
 [![Demo Video](Screenshot/thumbnail.png)](https://vimeo.com/manage/videos/794941050)
@@ -104,16 +109,12 @@ The following is 7-minute video demonstrating all of the features of the applica
 2. Navigate to the project directory:
     
     ``cd course-registration-system``
- 
-3. Install any required dependencies, if necessary. You can use the following command to install dependencies listed in the requirements.txt file:
-
-    ``pip install -r requirements.txt``
- 
-4. Run the main script by executing the following command:
+  
+3. Run the main script by executing the following command:
 
     ``python main.py``
  
-5. You should now see the output of the script.
+4. You should now see a login window pop-up appear.
 
  
 ## Project Status
