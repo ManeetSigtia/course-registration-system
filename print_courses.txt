@@ -1,2 +1,1 @@
 ID,Course Name,Course Level,Age Group,Sessions,Course Fee,Registered
-017301,Scratch Coding Regular Course,Intermediate,7-9,12,124,5
