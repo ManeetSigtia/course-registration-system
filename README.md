@@ -1,6 +1,5 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Course Registration System
+> An application that allows instructors to enter details of courses, students and schedules through a GUI and register them. It also allows users to track payments made by students and automatically generates consecutive terms for courses. The application can export these details to a CSV file.
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -17,11 +16,11 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+### The Problem
+An educational academy in Singapore that runs STEM courses keeps track of all its details (ranging from student and course registrations to payment records) using a spreadsheet. As the academy grows, they have to maintain more records. Thus, using spreadsheets becomes inefficient and cumbersome. It is error prone due to lack of validation, data normalization and there is substantial repetition of information. Overall, the process is time-consuming and tedious.
+
+### Solution
+
 
 
 ## Technologies Used
@@ -38,7 +37,7 @@ List the ready features here:
 
 
 ## Screenshots
-[![Demo Video](.Screenshot/thumbnail.png)](https://vimeo.com/manage/videos/794941050)
+[![Demo Video](Screenshot/thumbnail.png)](https://vimeo.com/manage/videos/794941050)
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
@@ -48,43 +47,20 @@ What are the project requirements/dependencies? Where are they listed? A require
 
 Proceed to describe how to install / setup one's local environment / get started with the project.
 
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
-
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
+Project is: _complete_
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+- An additional field can be added during Course Creation stage that segregates the courses into two, “Regular Courses” and “Holiday Camps”. Based on this, further operations can be done for each category.
 
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+- As of now, the users must choose from a fixed number of Course names. In the future, as the academy grows, they may have more names to offer. Thus a feature that allows them to add, delete and edit course names to the current list could be included.
 
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
+- Along with generation of reports in the form of text files, PDF reports can be generated. These could be treated as certificates for students that indicate they have completed a course. Moreover, the application could provide the ability to connect to a printer and print reports as and when required by the user.
 
 ## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
+Many thanks to
+- the director of Genius Assembly for giving me an opportunity to develop this sytem
+- my dad, my best friend, and my high school computer science teacher for providing valuable feedback and excellent resources to learn technologies that were used to build this application.
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+My email address is sigtiamaneet@gmail.com - feel free to contact me!
