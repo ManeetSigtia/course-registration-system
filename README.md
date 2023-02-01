@@ -1,5 +1,5 @@
 # Course Registration System
-> An application that allows instructors to enter details of courses, students and schedules through a GUI and register them. It also allows users to track payments made by students and automatically generates consecutive terms for courses. The application can export these details to a CSV file.
+An application that allows instructors to enter details of courses, students and schedules through a GUI and register them. It also allows users to track payments made by students and automatically generates consecutive terms for courses. The application can export these details to a CSV file.
 
 
 ## Table of Contents
