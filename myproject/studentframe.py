@@ -1,15 +1,16 @@
-from tkinter import *
-from widgets import Widgets
+from tkinter import Label, Frame, END
+
 import style
-import file_handler
+from widgets import Widgets
 from verify import Validation
+from file_handler import binary_file_reader, binary_file_writer
 
 
 class NewStudent:
     # class to make student objects that will later be used to map students to courses
     def __init__(self, student_name, date_of_birth, parent_name, email, phone):
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         self.student_name = student_name
         self.date_of_birth = date_of_birth
@@ -44,7 +45,7 @@ class NewStudent:
         self.all_entities_array[4].append(element)
 
         # writing the updated array back onto the file
-        file_handler.binary_file_writer(self.all_entities_array)
+        binary_file_writer(self.all_entities_array)
 
 
 class StudentFrame(Widgets, Validation):
@@ -187,7 +188,7 @@ class StudentFrame(Widgets, Validation):
             else:
                 # all validation checks passed
                 # calling the read function from file handler to read binary file
-                self.all_entities_array = file_handler.binary_file_reader()
+                self.all_entities_array = binary_file_reader()
 
                 # concatenating the date of birth in DD/MMM/YYYY format
                 self.date_of_birth = self.day_dropdown_content + "/" + \

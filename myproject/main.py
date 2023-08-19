@@ -1,6 +1,7 @@
-from tkinter import *
-import login
-import file_handler
+from tkinter import Tk
+
+from loginframe import Login
+from file_handler import binary_file_writer, text_file_writer
 
 
 # should be called when the system needs to be reset.
@@ -21,19 +22,18 @@ def reset():
     student_string = 'ID,Student Name,Date of Birth,Parent Name,Parent Email,Phone Number,Registered'
     term_string = 'Registration ID,Term ID,Course Name,Student Name,Sessions,Course Fee,Start Date,End Date,' \
                             'Discount Type,Discount Amount,Payment Method,Amount Paid,Payment Date,Account Name,Status'
-    
 
     # 2-D array that stores all values
     all_entities_array = [course_names, age_groups, courses, schedules, students, registrations, terms, user_accounts]
-    file_handler.binary_file_writer(all_entities_array)
+    binary_file_writer(all_entities_array)
 
     # writing the final string onto the csv files
-    file_handler.text_file_writer(course_string, 'courses')
-    file_handler.text_file_writer(schedule_string, 'schedules')
-    file_handler.text_file_writer(student_string, 'students')
-    file_handler.text_file_writer(term_string, 'terms')
+    text_file_writer(course_string, 'courses')
+    text_file_writer(schedule_string, 'schedules')
+    text_file_writer(student_string, 'students')
+    text_file_writer(term_string, 'terms')
 
 
 root = Tk()
-application = login.Login(root)
+application = Login(root)
 root.mainloop()

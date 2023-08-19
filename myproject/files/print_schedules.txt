@@ -1,0 +1,2 @@
+ID,Day,Start Time,End Time,Registered
+000801,Monday,0800,1100,1

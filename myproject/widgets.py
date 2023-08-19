@@ -1,5 +1,6 @@
-from tkinter import *
+from tkinter import Tk, Label, Button, Entry, Scrollbar, Text, Listbox, Frame, Y, NO, W, RIGHT
 from tkinter import ttk
+
 import style
 
 

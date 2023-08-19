@@ -1,7 +1,8 @@
-from tkinter import *
-from widgets import Widgets
+from tkinter import Label, Frame, END
+
 import style
-import file_handler
+from widgets import Widgets
+from file_handler import binary_file_reader, binary_file_writer
 from verify import Validation
 
 
@@ -9,7 +10,7 @@ class NewCourse:
     # class to make course objects that will later be used to register students
     def __init__(self, name, level, age_group, sessions, fee):
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         self.name = name
         self.level = level
@@ -43,7 +44,7 @@ class NewCourse:
         self.all_entities_array[2].append(element)
 
         # writing the updated array back onto the file
-        file_handler.binary_file_writer(self.all_entities_array)
+        binary_file_writer(self.all_entities_array)
 
 
 class CourseFrame(Widgets, Validation):
@@ -54,7 +55,7 @@ class CourseFrame(Widgets, Validation):
         self.__frame = Frame(root, width=style.frame_width, height=style.frame_height)
 
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # reading the course names, course levels and age groups list
         # these arrays will be used to set dropdowns for this frame
@@ -164,7 +165,7 @@ class CourseFrame(Widgets, Validation):
             else:
                 # all validation checks passed
                 # calling the read function from file handler to read binary file
-                self.all_entities_array = file_handler.binary_file_reader()
+                self.all_entities_array = binary_file_reader()
 
                 # creating new course object
                 self.created_course_object = NewCourse(self.course_name_dropdown_content,

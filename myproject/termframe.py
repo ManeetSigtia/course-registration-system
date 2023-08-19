@@ -1,13 +1,14 @@
-from tkinter import *
+from tkinter import Tk, Label, Button, Frame, PhotoImage
 from tkinter import ttk
 from tkinter.font import Font
-import style
-import datetime
 from datetime import datetime, timedelta
-import quicksort
-from verify import Validation
+import os
+
+import style
 from widgets import Widgets
-import file_handler
+from quicksort import quicksort
+from verify import Validation
+from file_handler import binary_file_reader, binary_file_writer, text_file_writer
 
 
 class NewTerm:
@@ -44,7 +45,7 @@ class TermFrame(Widgets, Validation):
         self.__frame.option_add("*TCombobox*Listbox*Font", self.dropdown_size)
 
         # image that will be used for the search button
-        self.search_image = PhotoImage(file=r"search_1.png")
+        self.search_image = PhotoImage(file=os.path.join(os.path.dirname(__file__), "images", "search_1.png"))
 
         # list used in the discount type dropdown
         self.discount_types_array = ["None", "Early Bird", "Packaged", "Referral", "Sibling"]
@@ -78,7 +79,7 @@ class TermFrame(Widgets, Validation):
         self.success_term_window_text = 'The term details have been successfully saved.'
 
         # reading the file to get the updated version of the course objects
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # calling this function to place all created widgets on screen
         self.__frame_elements()
@@ -178,7 +179,7 @@ class TermFrame(Widgets, Validation):
     # function to delete a term
     def __delete(self):
         # reading the file to get the updated version of the term objects
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
         try:
             # determining which term has been selected
             self.selected_row = self.term_table.focus()
@@ -187,7 +188,7 @@ class TermFrame(Widgets, Validation):
             self.all_entities_array[6].pop(int(self.selected_row))
 
             # writing the array after the dleetion of the term back onto the file
-            file_handler.binary_file_writer(self.all_entities_array)
+            binary_file_writer(self.all_entities_array)
 
             # inserting term details into the table and re-disabling the buttons
             self.__insert_data()
@@ -204,7 +205,7 @@ class TermFrame(Widgets, Validation):
                             'Discount Type,Discount Amount,Payment Method,Amount Paid,Payment Date,Account Name,Status'
 
         # reading the terms object array from the binary file
-        self.term_object_array = file_handler.binary_file_reader()[6]
+        self.term_object_array = binary_file_reader()[6]
 
         # looping through the terms object array
         for term in self.term_object_array:
@@ -221,7 +222,7 @@ class TermFrame(Widgets, Validation):
             self.final_string += '\n' + self.row_string
 
         # writing the final string onto the file
-        file_handler.text_file_writer(self.final_string, 'terms')
+        text_file_writer(self.final_string, 'terms')
 
         # displaying that the term details have been saved to the text file
         self.make_notification_window(self.success_term_window_title, self.success_term_window_title)
@@ -235,7 +236,7 @@ class TermFrame(Widgets, Validation):
         self.style = ttk.Style(self.edit_master)
         self.style.theme_use('clam')
         self.edit_master.geometry('780x350+450+330')
-        self.edit_master.iconbitmap('App_icon.ico')
+        self.edit_master.iconbitmap(r'images/App_icon.ico')
         self.edit_master.title('Edit Details')
 
         # setting the initial pivot position based on which the label y values of the lable will change
@@ -311,7 +312,7 @@ class TermFrame(Widgets, Validation):
     def __submit_edits(self):
         # calling the read function from file handler
         # reading the term list and making it an attribute of this class
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
         self.edited_term_object = self.all_entities_array[6][int(self.selected_row)]
 
         # fetching the deta from the fields
@@ -437,7 +438,7 @@ class TermFrame(Widgets, Validation):
                     self.all_entities_array[6][int(self.selected_row)] = self.edited_term_object
 
                     # saving the term objects array
-                    file_handler.binary_file_writer(self.all_entities_array)
+                    binary_file_writer(self.all_entities_array)
 
                     # updating the sessions on the new course file as well
                     self.__course_session_changer()
@@ -456,7 +457,7 @@ class TermFrame(Widgets, Validation):
 
     # function to enter term details into table
     def __insert_data(self):
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # clearing all previous fields present in the table
         for record in self.term_table.get_children():
@@ -469,7 +470,7 @@ class TermFrame(Widgets, Validation):
         self.terms_object_array = self.all_entities_array[6]
 
         # sorting the array using quicksort and storing it in a new variable
-        self.sorted_term_info = quicksort.quicksort(0, len(self.terms_object_array) - 1, self.terms_object_array)  # sorting the array
+        self.sorted_term_info = quicksort(0, len(self.terms_object_array) - 1, self.terms_object_array)  # sorting the array
         # before entering data into the table
 
         # fetching the search conditions
@@ -556,4 +557,4 @@ class TermFrame(Widgets, Validation):
                 self.all_entities_array[6].insert(index + 1, self.new_term)
 
                 # writing the edited array back onto the file
-                file_handler.binary_file_writer(self.all_entities_array)
+                binary_file_writer(self.all_entities_array)

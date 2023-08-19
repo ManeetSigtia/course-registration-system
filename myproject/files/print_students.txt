@@ -1,0 +1,2 @@
+ID,Student Name,Date of Birth,Parent Name,Parent Email,Phone Number,Registered
+006600,Chess Online Regular Course,Beginner,4-6,3,123,1

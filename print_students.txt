@@ -1,1 +1,0 @@
-ID,Student Name,Date of Birth,Parent Name,Parent Email,Phone Number,Registered

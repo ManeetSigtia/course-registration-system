@@ -1,4 +1,5 @@
-from tkinter import *
+from tkinter import Label, Button, Frame
+
 import style
 from courseframe import CourseFrame
 from studentframe import StudentFrame
@@ -13,7 +14,7 @@ class Screens:
         # customizing the main window
         self.root = root
         self.root.title('Genius Assembly Management System')
-        self.root.iconbitmap(r"App_icon.ico")
+        self.root.iconbitmap(r"images/App_icon.ico")
         self.root.state('zoomed')
 
         # stack which will control the back flow of frame objects

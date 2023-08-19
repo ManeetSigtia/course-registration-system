@@ -103,19 +103,29 @@ The following is 7-minute video demonstrating all of the features of the applica
 
 ## Setup
 
+Before you start setting up the project, please ensure that you have Python installed on your system. 
+If not, you can download and install Python from the [official Python website](https://www.python.org/downloads/).
+
 1. Clone the repository to your local machine using the following command:
 
-    ``git clone https://github.com/ManeetSigtia/course-registration-system.git``
+    ```
+    git clone https://github.com/ManeetSigtia/course-registration-system.git
+    ```
 
 2. Navigate to the project directory:
     
-    ``cd course-registration-system``
+    ```
+    cd course-registration-system/myproject
+    ```
   
 3. Run the main script by executing the following command:
 
-    ``python main.py``
+    ```
+    python main.py
+    ```
  
 4. You should now see a login window pop-up appear.
+
 
  
 ## Project Status

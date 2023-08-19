@@ -1,7 +1,9 @@
-from tkinter import *
-from widgets import Widgets
+from tkinter import Label, Button, Frame, PhotoImage
+import os
+
 import style
-import file_handler
+from widgets import Widgets
+from file_handler import binary_file_reader, text_file_writer
 
 
 class ReportFrame(Widgets):
@@ -11,7 +13,7 @@ class ReportFrame(Widgets):
         self.__frame = Frame(root, width=style.frame_width, height=style.frame_height)
 
         # image that will be used for the search button
-        self.search_image = PhotoImage(file=r"search_1.png")
+        self.search_image = PhotoImage(file=os.path.join(os.path.dirname(__file__), "images", "search_1.png"))
 
         # array containing the different options to view the details
         self.select_search_options_array = ['Student', 'Schedule', 'Course']
@@ -27,7 +29,7 @@ class ReportFrame(Widgets):
         self.success_window_text = 'The details have been successfully saved.'
 
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
         self.course_names_array = self.all_entities_array[0]
 
         # preseting dropdown search criteria. This can be later changed by the user.
@@ -159,20 +161,20 @@ class ReportFrame(Widgets):
             self.course_string += self.final_string
 
             # writing the final string onto the course text file
-            file_handler.text_file_writer(self.course_string, 'courses')
+            text_file_writer(self.course_string, 'courses')
 
         if self.select_search_dropdown_content == 'Schedule':
             # updating the schedule string with the relevant schedule details
             self.schedule_string += self.final_string
 
             # writing the final string onto the schedule text file
-            file_handler.text_file_writer(self.schedule_string, 'schedules')
+            text_file_writer(self.schedule_string, 'schedules')
         else:
             # updating the student string with the relevant student details
             self.student_string += self.final_string
 
             # writing the final string onto the student text file
-            file_handler.text_file_writer(self.student_string, 'students')
+            text_file_writer(self.student_string, 'students')
 
         # notifying user that the details have been saved successfully onto the text file
         self.make_notification_window(self.success_window_title, self.success_window_text)
@@ -188,7 +190,7 @@ class ReportFrame(Widgets):
         self.table_row_counter = 0
 
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # array that stores registered objects
         self.registered_objects_array = self.all_entities_array[5]

@@ -1,11 +1,12 @@
-from tkinter import *
-from widgets import Widgets
-import style
-import file_handler
-from verify import Validation
-import datetime
+from tkinter import Label, Frame, Button, PhotoImage, END, ANCHOR
 from datetime import datetime, timedelta
+import os
+
+import style
+from widgets import Widgets
 from termframe import NewTerm
+from verify import Validation
+from file_handler import binary_file_reader, binary_file_writer
 
 
 class NewRegister:
@@ -27,11 +28,11 @@ class RegisterFrame(Widgets, Validation):
         self.__frame = Frame(root, width=style.frame_width, height=style.frame_height)
 
         # images that will be used for the search and refresh buttons
-        self.refresh_image = PhotoImage(file=r"refresh_1.png")
-        self.search_image = PhotoImage(file=r"search_1.png")
+        self.refresh_image = PhotoImage(file=os.path.join(os.path.dirname(__file__), "images", "refresh_1.png"))
+        self.search_image = PhotoImage(file=os.path.join(os.path.dirname(__file__), "images", "search_1.png"))
 
         # lists used to make dropdown menus when data is being input:
-        # list containing date of datys from 0 to 30
+        # list containing dates from 0 to 30
         self.days_array = [str(x).zfill(2) for x in range(1, 32)]
 
         # list containing name of months
@@ -245,7 +246,7 @@ class RegisterFrame(Widgets, Validation):
     # function to update available and new courses displayed in the dropdown
     def __refresh_courses(self):
         # reading the file to get the updated version of the course objects
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # list that will be used to display options in the course dropdown
         self.course_array = []
@@ -269,7 +270,7 @@ class RegisterFrame(Widgets, Validation):
         self.boolean_students_found = False
 
         # reading the file to get the updated version of the student objects
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # getting the search criteria and removing whitespaces before and after string
         self.student_search_criteria = self.student_entrybox.get().strip()
@@ -288,7 +289,7 @@ class RegisterFrame(Widgets, Validation):
     # function to update available and new schedules displayed in the dropdown
     def __refresh_schedules(self):
         # reading the file to get the updated version of the schedule objects
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # list that will be used to display options in the schedule dropdown
         self.schedule_objects_array = []
@@ -369,7 +370,7 @@ class RegisterFrame(Widgets, Validation):
             else:
                 # all validation checks passed
                 # calling the read function from file handler
-                self.all_entities_array = file_handler.binary_file_reader()
+                self.all_entities_array = binary_file_reader()
 
                 # calling function to combine the date of birth in DD/MM/YYYY format
                 self.__identify_object_details()
@@ -390,7 +391,7 @@ class RegisterFrame(Widgets, Validation):
                 self.all_entities_array[5].append(self.created_registration_object)
 
                 # writing the array back onto the file to save changes
-                file_handler.binary_file_writer(self.all_entities_array)
+                binary_file_writer(self.all_entities_array)
 
                 # displaying that the registration object has been saved
                 self.make_notification_window(self.success_register_window_title, self.success_register_window_text, x=50)
@@ -412,7 +413,7 @@ class RegisterFrame(Widgets, Validation):
     # function to identify ids for course, schedule and students that have been used in the registration
     def __identify_object_details(self):
         # reading the file so that if updated, those changes can be accessed as well
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         # creating a string that will be used later to perform date operations
         self.class_start_date = self.start_day_dropdown_content + "/" + \
@@ -607,22 +608,22 @@ class RegisterFrame(Widgets, Validation):
         #
         self.__save_terms()
 
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
         if self.amount_and_date_checker:
             # adding the new term to the correct array in the 2D Array
             self.all_entities_array[6].append(self.created_term_object)
-            file_handler.binary_file_writer(self.all_entities_array)
+            binary_file_writer(self.all_entities_array)
 
     # function to update and save last created term if user decides to edit it
     def __term_editor(self):
         # creating an edited term object
         self.__save_terms()
         # reading file contents to ensure that the data being worked on is updated
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
         if self.amount_and_date_checker:
             # editing the new term that was added if the submit term button is pressed
             self.all_entities_array[6][-1] = self.created_term_object
-            file_handler.binary_file_writer(self.all_entities_array)
+            binary_file_writer(self.all_entities_array)
 
             self.make_notification_window(self.success_term_window_title, self.success_term_window_text, x=50)
 

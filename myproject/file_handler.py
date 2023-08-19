@@ -13,22 +13,21 @@ import pickle
 
 # funtion to save objects in file
 def binary_file_writer(contents):
-    binary_written_file = open(r'final.dat', 'wb')
-    pickle.dump(contents, binary_written_file)
-    binary_written_file.close()
+    file_path = r'files/final.dat'
+    with open(file_path, 'wb') as binary_file:
+        pickle.dump(contents, binary_file)
 
 
 # function to read contents of file
 def binary_file_reader():
-    binary_read_file = open(r'final.dat', 'rb')
-    contents = pickle.load(binary_read_file)
-    binary_read_file.close()
-    return contents
+    file_path = r'files/final.dat'
+    with open(file_path, 'rb') as binary_file:
+        contents = pickle.load(binary_file)
+        return contents
 
 
 # function to write reports in text files
 def text_file_writer(contents, name):
-    file_name = r'print_%s.txt' % name
-    text_read_file = open(file_name, 'w')
-    text_read_file.write(contents)
-    text_read_file.close()
+    file_name = r'files/print_%s.txt' % name
+    with open(file_name, 'w') as text_file:
+        text_file.write(contents)

@@ -1,10 +1,11 @@
-from tkinter import *
+from tkinter import Tk, Label
 from tkinter import ttk
+
+import style
 from screens import Screens
 from widgets import Widgets
-import encrypt
-import style
-import file_handler
+from encryption import encrypt, decrypt
+from file_handler import binary_file_reader, binary_file_writer
 
 
 class Login(Widgets):
@@ -12,7 +13,7 @@ class Login(Widgets):
         super().__init__()
         self.login_root = root
         self.login_root.title('Login')
-        self.login_root.iconbitmap(r"App_icon.ico")
+        self.login_root.iconbitmap(r"images/App_icon.ico")
         self.login_root.state('zoomed')
 
         # initialising strings that will later be used in the making of pop-up windows
@@ -87,7 +88,7 @@ class Login(Widgets):
             self.unfilled_fields_master = self.make_notification_window(self.unfilled_window_title, self.unfilled_window_text)
 
         else:
-            self.all_entities_array = file_handler.binary_file_reader()
+            self.all_entities_array = binary_file_reader()
             self.username_details = self.all_entities_array[7]
             if self.signup_username_entrybox_content in self.username_details:
                 # error window if username already exists
@@ -95,8 +96,8 @@ class Login(Widgets):
                                                                                  self.username_exists_window_text, x=50)
             else:
                 # adding the new user to the dictionary and saving the contents by writing it onto the file after encryption
-                self.all_entities_array[7][self.signup_username_entrybox_content] = encrypt.encrypt(self.signup_password_entrybox_content, 1)
-                file_handler.binary_file_writer(self.all_entities_array)
+                self.all_entities_array[7][self.signup_username_entrybox_content] = encrypt(self.signup_password_entrybox_content, 1)
+                binary_file_writer(self.all_entities_array)
                 self.sign_in_master.destroy()
 
     # function to validate login entries
@@ -110,11 +111,11 @@ class Login(Widgets):
 
         else:
             # reading the contents of the file to ensure that even if new users have been created, they are accounted for
-            self.all_entities_array = file_handler.binary_file_reader()
+            self.all_entities_array = binary_file_reader()
             self.username_details = self.all_entities_array[7]    # the dictionary containing username details
             if self.login_username_entrybox_content in self.username_details:   # checking if the username entered exists
                 # checking if the passwords match
-                if encrypt.decrypt(self.username_details[self.login_username_entrybox_content], 1) == self.login_password_entrybox_content:
+                if decrypt(self.username_details[self.login_username_entrybox_content], 1) == self.login_password_entrybox_content:
                     # closing login window and opening the application window once a successful login has been made
                     self.make_notification_window(self.success_window_title, self.success_window_text, x=150)
                     self.login_root.destroy()

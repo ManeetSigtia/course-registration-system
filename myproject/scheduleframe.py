@@ -1,15 +1,16 @@
-from tkinter import *
-from widgets import Widgets
+from tkinter import Label, Frame
+
 import style
-import file_handler
+from widgets import Widgets
 from verify import Validation
+from file_handler import binary_file_reader, binary_file_writer
 
 
 class NewSchedule:
     # class to make schedule objects that will later be used to register students
     def __init__(self, day, start_time, end_time, description):
         # calling the read function from file handler
-        self.all_entities_array = file_handler.binary_file_reader()
+        self.all_entities_array = binary_file_reader()
 
         self.day = day
         self.start_time = start_time
@@ -42,7 +43,7 @@ class NewSchedule:
         self.all_entities_array[3].append(element)
 
         # writing the updated array back onto the file
-        file_handler.binary_file_writer(self.all_entities_array)
+        binary_file_writer(self.all_entities_array)
 
 
 class ScheduleFrame(Widgets, Validation):
@@ -178,7 +179,7 @@ class ScheduleFrame(Widgets, Validation):
             else:
                 # all validation checks passed
                 # calling the read function from the file handler to read binary file
-                self.all_entities_array = file_handler.binary_file_reader()
+                self.all_entities_array = binary_file_reader()
 
                 # converting the times to string so that they can be 2 digits
                 self.start_combination = str(self.start_combination).zfill(4)

@@ -12,6 +12,7 @@ def encrypt(string, shift):
         # accessing elements in the same order they were added
         encrypted_character = queue.pop(0)
         encrypted_string += encrypted_character  # generating encrypted string
+    
     return encrypted_string
 
 
@@ -29,4 +30,5 @@ def decrypt(string, shift):
         # accessing elements in the same order they were added
         decrypted_character = queue.pop(0)
         decrypted_string += decrypted_character  # generating encrypted string
+    
     return decrypted_string
