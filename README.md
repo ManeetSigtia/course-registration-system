@@ -9,6 +9,7 @@ An application that allows instructors to enter details of courses, students and
 * [Technologies Used](#technologies-used)
   * [Languages](#languages)
   * [Libraries](#libraries)
+  * [Dependencies](#dependencies)
 * [Features](#features)
   * [User Authentication](#user-authentication)
   * [Creation of Courses, Schedules, and Students](#creation-of-courses-schedules-and-students)
