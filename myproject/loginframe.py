@@ -1,4 +1,4 @@
-from tkinter import Tk, Label
+from tkinter import *
 from tkinter import ttk
 
 import style
@@ -61,7 +61,7 @@ class Login(Widgets):
         self.style = ttk.Style(self.sign_in_master)
         self.style.theme_use('clam')
         self.sign_in_master.geometry('650x300+450+350')
-        self.sign_in_master.iconbitmap(r'App_icon.ico')
+        self.sign_in_master.iconbitmap(r"images/App_icon.ico")
         self.sign_in_master.title('Sign Up')
 
         # creating labels for the login frame

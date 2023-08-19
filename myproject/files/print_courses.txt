@@ -1,2 +1,2 @@
 ID,Course Name,Course Level,Age Group,Sessions,Course Fee,Registered
-006600,Chess Online Regular Course,Beginner,4-6,3,123,1
+007301,Chess Online Regular Course,Intermediate,7-9,9,980,0

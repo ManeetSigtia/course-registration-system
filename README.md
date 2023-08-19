@@ -38,7 +38,7 @@ An educational academy in Singapore that runs STEM courses keeps track of all it
 
 ## Technologies Used
 ### Languages
-Python - version 3.9.1
+Python - version 3.9.1 
 
 ### Libraries
 #### tkinter
@@ -64,6 +64,9 @@ Used to process date and time arithmetic.
 #### re
 Short for regular expression. A special order of characters that assist in string pattern matching.
 
+### Dependencies
+
+This project is designed to be self-contained and does not rely on any external third-party packages. Therefore, the `requirements.txt` file is intentionally left empty.
 
 ## Features
 #### User Authentication
